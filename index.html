@@ -2,51 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Learn &amp; Be Curious · Apps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #050816;
-      color: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .card {
-      text-align: center;
-      padding: 2rem 1.8rem;
-      border-radius: 1.2rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: #020617;
-      max-width: 420px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
-    }
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.4rem;
-    }
-    p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      opacity: 0.9;
-      margin: 0.3rem 0;
-    }
-    .tagline {
-      font-size: 0.85rem;
-      margin-top: 0.8rem;
-      opacity: 0.7;
-    }
-  </style>
+  <title>Design, build, and ship with AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Learn &amp; Be Curious Apps</h1>
-    <p>A home for all the apps I’m building.</p>
-    <p class="tagline">This is a placeholder page. App tiles and tech stack coming soon.</p>
+  <div class="container">
+    <nav>
+      <div class="nav-brand">learn &amp; be curious</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero" id="home">
+      <h1>Design, build, and ship with AI.</h1>
+      <p>Exploring how AI can take an idea from concept to completion. A clean, neon-lit space to showcase experiments, prototypes, and the lessons along the way.</p>
+    </header>
+
+    <section class="projects gradient-border" id="about">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <h3>Neon Note</h3>
+          <p>AI-assisted journaling that glows with mood-aware prompts.</p>
+          <div class="meta-label">Built with AI tools:</div>
+          <div class="meta-copy">Placeholder AI toolchain</div>
+          <div class="meta-label">AI inside the idea:</div>
+          <div class="meta-copy">Placeholder concept</div>
+          <div class="meta-label">Tech stack:</div>
+          <div class="meta-copy">Placeholder tech stack</div>
+          <a href="app-template.html">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <h3>Signal Studio</h3>
+          <p>Visual synth sketches generated alongside your soundtrack.</p>
+          <div class="meta-label">Built with AI tools:</div>
+          <div class="meta-copy">Placeholder AI toolchain</div>
+          <div class="meta-label">AI inside the idea:</div>
+          <div class="meta-copy">Placeholder concept</div>
+          <div class="meta-label">Tech stack:</div>
+          <div class="meta-copy">Placeholder tech stack</div>
+          <a href="app-template.html">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <h3>Arcade Atlas</h3>
+          <p>Retro worlds mapped by AI, ready for your next adventure.</p>
+          <div class="meta-label">Built with AI tools:</div>
+          <div class="meta-copy">Placeholder AI toolchain</div>
+          <div class="meta-label">AI inside the idea:</div>
+          <div class="meta-copy">Placeholder concept</div>
+          <div class="meta-label">Tech stack:</div>
+          <div class="meta-copy">Placeholder tech stack</div>
+          <a href="app-template.html">Learn more →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="detail-section" aria-label="contact">
+      <h3>Let’s connect</h3>
+      <p>Have an idea, question, or collaboration in mind? Reach out and let’s make something neon together.</p>
+    </section>
   </div>
 </body>
 </html>
