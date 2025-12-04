@@ -221,6 +221,18 @@ nav {
   text-shadow: 0 0 14px rgba(255, 0, 230, 0.4);
 }
 
+.card-link {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 160ms ease, text-shadow 200ms ease;
+}
+
+.card-link:hover {
+  color: var(--magenta);
+  text-shadow: 0 0 14px rgba(255, 0, 230, 0.4);
+}
+
 /* App detail template */
 .detail-hero {
   padding: 52px 0 32px;
