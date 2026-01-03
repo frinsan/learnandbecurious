@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Million Hands: Baccarat Chat AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav-brand">learn &amp; be curious</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="detail-hero">
+      <h1 class="detail-title">Million Hands: Baccarat Chat AI</h1>
+      <p class="detail-subtitle">A data-driven baccarat assistant that turns large-scale simulation data into grounded answers about outcomes, streaks, side bets, and probabilities.</p>
+    </header>
+
+    <section class="detail-section gradient-border">
+      <h3>Overview</h3>
+      <p>Million Hands is a data-driven baccarat assistant built to explore how large-scale simulation data can be combined with modern LLMs. The app is backed by a database of over one million simulated baccarat hands, allowing users to ask questions about outcomes, streaks, side bets, and probabilities and receive answers grounded in empirical results.</p>
+      <p>The focus of the project is instructional and exploratory: demonstrating how AI agents, structured data, and real-time querying can be combined into a production-ready application across mobile platforms.</p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Built with</h3>
+      <ul class="detail-list">
+        <li><strong>Graphic Design:</strong> No dedicated graphic design process or tools used; UI and visual layout generated through prompts to ChatGPT and Codex, then refined directly in code.</li>
+        <li><strong>Architecture Design:</strong> System architecture designed collaboratively using OpenAI ChatGPT (GPT-4), focusing on empirical data pipelines, agent-based reasoning, and real-time query handling with emphasis on correctness, traceability, and data grounding.</li>
+        <li><strong>Requirements:</strong> Developed incrementally with assistance from OpenAI ChatGPT (GPT-4). Scope refined through iteration and live usage rather than fixed upfront specifications; primary requirement was prioritizing empirical analysis over theoretical responses.</li>
+        <li><strong>Development:</strong> Phase 1 assisted by OpenAI ChatGPT (GPT-4) with manual copy-paste of code, local compilation, and execution. Phase 2 transitioned to OpenAI Codex Web (GPT-4) using a Git-based workflow for improved iteration and structure. All code reviewed, compiled, and run manually.</li>
+        <li><strong>Testing:</strong> No automated test suite. Validation performed through manual testing, data inspection, and live app usage.</li>
+        <li><strong>Deployment:</strong> Backend and infrastructure deployed manually. No CI/CD pipeline or automated release process; ongoing updates handled through hands-on deployment and monitoring.</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>AI inside</h3>
+      <p>Million Hands: Baccarat Chat AI uses OpenAI GPT-4 for chat, including a tool-using LangChain agent that can answer empirical questions by querying the baccarat database (SQL tools) and a separate GPT-4 theory mode for rules and probability explanations. In parallel, the app serves a custom next-hand prediction model trained on 1,000,000+ baccarat hands. That training corpus is generated at the shoe level: a full shoe is shuffled using a seeded randomizer (recorded as a per-shoe <strong>shuffle_seed</strong>, with burn-card handling), then hands are dealt using standard baccarat drawing rules. Histories reset at each new shoe so sequences do not leak across shoes. The model (a scikit-learn RandomForest) learns from these realistic per-shoe histories using hashed sequence n-gram features and returns next-outcome probabilities.</p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Tech Stack</h3>
+      <ul class="detail-list">
+        <li><strong>Backend API:</strong> Python + FastAPI + Uvicorn</li>
+        <li><strong>AI chat:</strong> OpenAI Chat Completions (GPT-4; plus GPT-3.5-turbo for streaming WebSocket chat)</li>
+        <li><strong>Agent/orchestration:</strong> LangChain (tool-using agent with StructuredTool/SQL tools)</li>
+        <li><strong>Database:</strong> PostgreSQL (AWS RDS) accessed via asyncpg + psycopg2</li>
+        <li><strong>Infrastructure/hosting:</strong> AWS (EC2 for app/training compute, RDS for database, Secrets Manager for credentials)</li>
+        <li><strong>Auth + security:</strong> API key + Bearer token auth, passlib (bcrypt) password hashing</li>
+        <li><strong>Rate limiting:</strong> slowapi</li>
+        <li><strong>Config:</strong> .env (python-dotenv)</li>
+        <li><strong>ML inference:</strong> scikit-learn model loaded with joblib, NumPy feature encoding</li>
+        <li><strong>ML training pipeline:</strong> pandas + scikit-learn (RandomForest; optional LogisticRegression / HistGradientBoosting)</li>
+        <li><strong>Data generation/simulation:</strong> Python baccarat shoe simulator (seeded random.Random, 8-deck shoe, cut card + burn logic)</li>
+        <li><strong>Payments/subscriptions (native):</strong> iOS StoreKit + Google Play Billing (BillingClient)</li>
+        <li><strong>iOS app (native):</strong> Swift + SwiftUI</li>
+        <li><strong>Android app (native):</strong> Kotlin + Jetpack Compose</li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to all projects</a>
+  </div>
+</body>
+</html>
