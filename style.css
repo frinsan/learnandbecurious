@@ -200,7 +200,7 @@ nav {
 .card p {
   margin: 0 0 10px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .card-dates {
@@ -226,6 +226,7 @@ nav {
   font-size: 0.95rem;
   color: var(--muted);
   margin: 0 0 10px;
+  line-height: 1.4;
 }
 
 .store-badges {
