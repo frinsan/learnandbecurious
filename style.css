@@ -192,6 +192,17 @@ nav {
   line-height: 1.6;
 }
 
+.card-dates {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.7rem;
+  color: rgba(177, 184, 198, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
+}
+
 .meta-label {
   font-size: 0.85rem;
   color: var(--text);
@@ -204,6 +215,50 @@ nav {
   font-size: 0.95rem;
   color: var(--muted);
   margin: 0 0 10px;
+}
+
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(8, 5, 16, 0.6);
+  color: var(--text);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.store-badge.is-disabled {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.badge-icon.google {
+  font-size: 0.6rem;
 }
 
 .card a {
