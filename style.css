@@ -200,7 +200,6 @@ nav {
 .card p {
   margin: 0 0 10px;
   color: var(--muted);
-  line-height: 1.6;
 }
 
 .card-dates {
