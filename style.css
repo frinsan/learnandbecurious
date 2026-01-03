@@ -219,7 +219,7 @@ nav {
 
 .store-badges {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   margin: 10px 0 6px;
 }
@@ -236,7 +236,7 @@ nav {
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.4px;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
 }
 
