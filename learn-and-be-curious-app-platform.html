@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn and Be Curious: App Platform (iOS App Factory)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav-brand">learn &amp; be curious</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="detail-hero">
+      <h1 class="detail-title">Learn and Be Curious: App Platform (iOS App Factory)</h1>
+      <p class="detail-subtitle">A shared backend, SwiftUI template, and automation system that makes shipping branded iOS apps fast and repeatable.</p>
+    </header>
+
+    <section class="detail-section gradient-border">
+      <h3>Overview</h3>
+      <p>Learn and Be Curious is a “platform app factory” designed to make it easy to build, brand, and ship many iOS apps without starting from scratch each time. Instead of creating a new codebase per app, the system centralizes everything that should be shared (auth, networking, backend services, CI/CD patterns, observability, security defaults) and pushes everything that should vary per app into a small brand repo (manifest + assets + optional overlay code).</p>
+      <p>At a high level, the platform has three moving parts:</p>
+      <ol class="detail-list">
+        <li><strong>Platform backend (platform-backend/):</strong> a multi-tenant AWS serverless backend with staging and prod environments, Cognito auth (Apple/Google Hosted UI + optional native email), a versioned API (/v1/...), and DynamoDB persistence keyed by appId.</li>
+        <li><strong>iOS template app (ios-app-template/):</strong> a working SwiftUI starter app with a sidebar shell, manifest-driven configuration, auth/session handling, and a typed API client.</li>
+        <li><strong>Brand repos (e.g., app-sample/):</strong> a lightweight repository per app that supplies app.json (bundle id, display name, theme, API/auth config, feature flags, legal links, versions) plus assets and optional Overlay/TemplateApp/... Swift overrides.</li>
+      </ol>
+      <p>The “factory” mechanism turns a brand repo into a buildable iOS project by creating a scratch copy of the template and applying the brand’s manifest + overlay automatically (bundle ID, Info.plist, URL scheme, app icon/assets, versions). This keeps the template repo clean and makes iteration fast while supporting CI workflows that can produce signed archives for TestFlight/App Store distribution.</p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Built with</h3>
+      <ul class="detail-list">
+        <li><strong>Idea:</strong> The goal was to standardize and accelerate shipping many small, branded apps by making “new app creation” mostly configuration and assets rather than new code.</li>
+        <li><strong>Collaboration:</strong> OpenAI ChatGPT and Codex were used as iterative collaborators to explore architecture options, define onboarding workflows, and implement end-to-end scaffolding quickly.</li>
+        <li><strong>Graphic Design:</strong> No dedicated design toolchain. Branding is driven by per-app assets (icons/splash/colors) and a manifest-controlled theme (primary/accent/appearance).</li>
+        <li><strong>UI System:</strong> Template-first: a consistent sidebar shell and a neutral baseline that can be overridden per brand via overlays.</li>
+        <li><strong>Architecture Design:</strong> Split architecture: one shared backend, one shared iOS template, many per-brand repos. Multi-tenant backend with data partitioning and authorization keyed by appId.</li>
+        <li><strong>Environments:</strong> Two environments (staging/prod) to support QA/TestFlight builds before production promotion.</li>
+        <li><strong>Automation:</strong> Automation-first scripts and reusable workflows compose the final branded app at build time rather than forking the template codebase per brand.</li>
+        <li><strong>Requirements:</strong> Ship a working baseline app (sidebar shell + login + blank home), manifest-driven configuration, Cognito Hosted UI auth, and a repeatable new-brand launch process.</li>
+        <li><strong>Development:</strong> Monorepo workspace for backend, iOS template, and example brand repos. build_brand.sh creates scratch copies; apply_manifest.sh validates JSON and rewrites bundle IDs, Info.plist display name, URL schemes, versions, and assets.</li>
+        <li><strong>Testing:</strong> Template includes TemplateAppTests and can be exercised via xcodebuild test; primary validation is end-to-end smoke testing in staging before production.</li>
+        <li><strong>Deployment:</strong> Backend deploys via AWS CDK with separate staging/prod stacks; iOS builds produced locally or in GitHub Actions workflows for TestFlight/App Store distribution.</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>AI inside</h3>
+      <p>The iOS template includes a feature-flagged “AI Playground” screen used to validate AI plumbing. When available, it uses Apple’s on-device system language model to rewrite text (clearer/more formal/shorter). When unavailable (simulators or unsupported devices), it falls back to deterministic local transforms so the UI remains testable.</p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Tech Stack</h3>
+      <ul class="detail-list">
+        <li><strong>iOS app template:</strong> Swift, SwiftUI, XCTest</li>
+        <li><strong>Auth (mobile):</strong> Cognito Hosted UI (Sign in with Apple + Google), custom URL scheme redirect handling</li>
+        <li><strong>Backend IaC:</strong> AWS CDK (TypeScript)</li>
+        <li><strong>Backend services:</strong> Amazon API Gateway (HTTP API), AWS Lambda, Amazon DynamoDB</li>
+        <li><strong>Edge/static assets:</strong> Amazon S3, Amazon CloudFront</li>
+        <li><strong>Observability:</strong> Amazon CloudWatch logs and alarms</li>
+        <li><strong>CI/CD:</strong> GitHub Actions (reusable workflows; xcodebuild test/archive; artifact upload)</li>
+        <li><strong>Build tooling:</strong> Bash scripts, jq (manifest validation), rsync (scratch copy), PlistBuddy + perl (project/Info.plist rewrites)</li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to all projects</a>
+  </div>
+</body>
+</html>
