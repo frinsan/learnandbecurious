@@ -24,16 +24,16 @@
 
     <section class="detail-section gradient-border">
       <h3>Overview</h3>
-      <p>Visa Photo is a lightweight iOS app for creating passport and visa photos in common consulate-friendly sizes. It was the first “real” branded app built on top of my shared iOS template and backend, used to validate the end-to-end app factory workflow (manifest + overlay + automated builds) with a simple, deterministic product.</p>
+      <p>Visa Photo is a lightweight iOS app for creating passport and visa photos in common consulate-friendly sizes. It was the first “real” branded app built on top of my shared iOS template and backend, used to validate the end-to-end app factory workflow (manifest + overlay + automated builds).</p>
       <p>The core user flow is intentionally minimal: capture or upload a photo, choose a preset (visa/passport) or enter a custom size, align the face using a cropping guide with zoom/drag controls, and export the final image at the target dimensions.</p>
     </section>
 
     <section class="detail-section">
       <h3>Built with</h3>
       <ul class="detail-list">
-        <li><strong>Idea:</strong> I needed a straightforward passport/visa photo utility for my wife’s visa application, but most App Store options were either upsell-heavy or priced like a one-off purchase ($10+). Build a very small app as the first customer of the template to prove the app-factory concept: brand repo + manifest + overlay code, without forking the template. Keep the UX simple and predictable; prioritize “works every time” exports over complex editing features.</li>
-        <li><strong>Graphic Design:</strong> No dedicated design toolchain. The app relies on template theming plus a small set of brand assets (app icon, guide overlays). The UI is designed to feel like a focused utility: a single primary call-to-action and a linear flow.</li>
-        <li><strong>Architecture Design:</strong> Built as a brand overlay on top of the shared SwiftUI template: brand-specific Home replaces the template Home experience (PassportHomeView + PhotoFlowView). Photo size presets live in a small JSON file (presets_library.json) loaded at runtime. Uses the shared template shell (sidebar, legal links, optional account/login surfaces) so future apps can share the same infrastructure.</li>
+        <li><strong>Idea:</strong> I needed a straightforward passport/visa photo utility for my wife’s visa application, but most App Store options were either upsell-heavy or priced like a one-off purchase ($10+).</li>
+        <li><strong>Graphic Design:</strong> N/A</li>
+        <li><strong>Architecture Design:</strong> Built as a brand overlay on top of the shared SwiftUI template: brand-specific Home replaces the template Home experience (PassportHomeView + PhotoFlowView). Photo size presets live in a small JSON file (presets_library.json) loaded at runtime.</li>
         <li><strong>Requirements:</strong> Support a small set of visa/passport presets (mm + DPI) plus a custom size option. Provide an on-screen guide silhouette for 1:1 and rectangular formats to help alignment. Export consistently-sized images suitable for digital submission. Keep the app fast, offline-friendly, and minimal.</li>
         <li><strong>Development:</strong> Implemented a guided, step-based flow: UploadPhoto (camera or photo library selection), ChooseFormat (select a preset or custom dimensions), Edit (pinch-to-zoom and drag-to-align inside a target frame with an overlay guide), and Export (generate output image data and save to the Photos library, with optional share sheet UX available in the flow). Packaged as a brand repo with a manifest (bundle id, URL scheme, theme, feature flags) and an overlay that replaces only the pieces that are app-specific.</li>
         <li><strong>Testing:</strong> Manual testing focused on the flow end-to-end: import/capture, preset selection, crop/zoom/drag behavior, and successful export/save. Sanity checks for common preset sizes (e.g., 2x2 inch style formats) and consistent pixel dimensions at 300 DPI.</li>
