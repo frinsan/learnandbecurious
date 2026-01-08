@@ -17,46 +17,74 @@
       </ul>
     </nav>
 
-    <header class="detail-hero">
-      <h1 class="detail-title">Visa Photo (Passport Photo Maker)</h1>
-      <p class="detail-subtitle">A lightweight iOS utility for creating consulate-friendly passport and visa photos in preset or custom sizes.</p>
-    </header>
+<header class="detail-hero">
+  <h1 class="detail-title">Visa Photo Maker</h1>
+  <p class="detail-subtitle">
+    A lightweight iOS app for creating passport and visa photos. Users select a country preset (or custom size), align their photo using a visual guide, and export a submission-ready image with correct dimensions and DPI.
+  </p>
+</header>
 
-    <section class="detail-section gradient-border">
-      <h3>Overview</h3>
-      <p>Visa Photo is a lightweight iOS app for creating passport and visa photos in common consulate-friendly sizes. It was the first “real” branded app built on top of my shared iOS template and backend, used to validate the end-to-end app factory workflow (manifest + overlay + automated builds).</p>
-      <p>The core user flow is intentionally minimal: capture or upload a photo, choose a preset (visa/passport) or enter a custom size, align the face using a cropping guide with zoom/drag controls, and export the final image at the target dimensions.</p>
-    </section>
+<section class="detail-section gradient-border">
+  <h3>Overview</h3>
+  <p>
+    Visa Photo is a lightweight iOS app for creating passport and visa photos in common consulate-friendly sizes. It was the first fully branded app built on top of my shared iOS template and backend, used to validate the end-to-end app factory workflow (manifest + overlay + automated builds).
+  </p>
+  <p>
+    The core user flow is intentionally minimal: capture or upload a photo, choose a preset (visa/passport) or enter a custom size, align the face using a cropping guide with zoom/drag controls, and export the final image at the target dimensions.
+  </p>
+</section>
 
-    <section class="detail-section">
-      <h3>Built with</h3>
-      <ul class="detail-list">
-        <li><strong>Idea:</strong> I needed a straightforward passport/visa photo utility for my wife’s visa application, but most App Store options were either upsell-heavy or priced like a one-off purchase ($10+).</li>
-        <li><strong>Graphic Design:</strong> N/A</li>
-        <li><strong>Architecture Design:</strong> Built as a brand overlay on top of the shared SwiftUI template: brand-specific Home replaces the template Home experience (PassportHomeView + PhotoFlowView). Photo size presets live in a small JSON file (presets_library.json) loaded at runtime.</li>
-        <li><strong>Requirements:</strong> Support a small set of visa/passport presets (mm + DPI) plus a custom size option. Provide an on-screen guide silhouette for 1:1 and rectangular formats to help alignment. Export consistently-sized images suitable for digital submission. Keep the app fast, offline-friendly, and minimal.</li>
-        <li><strong>Development:</strong> Implemented a guided, step-based flow: UploadPhoto (camera or photo library selection), ChooseFormat (select a preset or custom dimensions), Edit (pinch-to-zoom and drag-to-align inside a target frame with an overlay guide), and Export (generate output image data and save to the Photos library, with optional share sheet UX available in the flow). Packaged as a brand repo with a manifest (bundle id, URL scheme, theme, feature flags) and an overlay that replaces only the pieces that are app-specific.</li>
-        <li><strong>Testing:</strong> Manual testing focused on the flow end-to-end: import/capture, preset selection, crop/zoom/drag behavior, and successful export/save. Sanity checks for common preset sizes (e.g., 2x2 inch style formats) and consistent pixel dimensions at 300 DPI.</li>
-        <li><strong>Deployment:</strong> Designed to be built via the template’s reusable CI workflow: apply the manifest, apply overlay code/assets, archive, and produce a distributable artifact for TestFlight/App Store Connect. Backend integration (auth/profile endpoints) comes from the shared platform; the photo workflow itself is local to the device.</li>
-      </ul>
-    </section>
+<section class="detail-section">
+  <h3>Built with</h3>
+  <ul class="detail-list">
+    <li>
+      <strong>Idea:</strong>
+      I talked through the concept and scope with ChatGPT, focusing on a minimal, offline-first photo utility and avoiding upsell-heavy flows common in similar apps.
+    </li>
+    <li>
+      <strong>Graphic Design:</strong>
+      I used ChatGPT to keep branding intentionally minimal and consistent with the shared template’s theming system (manifest-driven colors and a small set of assets).
+    </li>
+    <li>
+      <strong>Architecture Design:</strong>
+      Inherited directly from the shared App Platform. The app is implemented as a brand overlay on top of the existing SwiftUI template, reusing the platform’s navigation shell, configuration model, and backend integration without redesigning architecture.
+    </li>
+    <li>
+      <strong>Requirements:</strong>
+      I used ChatGPT to define a tight requirements set: a small preset library (mm + DPI), a custom size option, an alignment guide with zoom/drag controls, deterministic exports, and an offline-friendly experience.
+    </li>
+    <li>
+      <strong>Development:</strong>
+      I used the VS Code + OpenAI Codex extension (GPT-5) to implement the full photo workflow end to end, including the step-based UI, crop/zoom/drag behavior, export pipeline, and integration as a brand repo (manifest + overlay).
+    </li>
+    <li>
+      <strong>Testing:</strong>
+      I used the VS Code + OpenAI Codex extension (GPT-5) to iteratively run the app, validate edge cases, and fix issues discovered during end-to-end flow testing (capture/import → crop → export → save).
+    </li>
+    <li>
+      <strong>Deployment:</strong>
+      Deployment is provided by the shared App Platform. The app is built by applying its manifest and overlay to the template and running the platform’s reusable CI workflow to produce a signed artifact for TestFlight or App Store submission.
+    </li>
+  </ul>
+</section>
 
-    <section class="detail-section">
-      <h3>AI inside</h3>
-      <p>None. The app is intentionally non-AI and focused on deterministic photo sizing/cropping.</p>
-    </section>
+<section class="detail-section">
+  <h3>AI inside</h3>
+  <p>None. The app is intentionally non-AI and focused on deterministic photo sizing and cropping.</p>
+</section>
 
-    <section class="detail-section">
-      <h3>Tech Stack</h3>
-      <ul class="detail-list">
-        <li><strong>iOS:</strong> Swift, SwiftUI</li>
-        <li><strong>Image pipeline:</strong> UIKit (UIImage), ImageIO, UniformTypeIdentifiers</li>
-        <li><strong>Device integration:</strong> Photos framework (save/export), camera/photo picker UI</li>
-        <li><strong>Config:</strong> JSON preset library + per-brand manifest (app.json)</li>
-        <li><strong>Build/automation:</strong> GitHub Actions reusable workflows + template build scripts</li>
-        <li><strong>Shared platform (template-provided):</strong> Cognito Hosted UI auth + platform backend (API Gateway, Lambda, DynamoDB) for account/profile flows</li>
-      </ul>
-    </section>
+<section class="detail-section">
+  <h3>Tech Stack</h3>
+  <ul class="detail-list">
+    <li><strong>iOS:</strong> Swift, SwiftUI</li>
+    <li><strong>Image pipeline:</strong> UIKit (UIImage), ImageIO, UniformTypeIdentifiers</li>
+    <li><strong>Device integration:</strong> Photos framework (save/export), camera/photo picker UI</li>
+    <li><strong>Config:</strong> JSON preset library + per-brand manifest (app.json)</li>
+    <li><strong>Build/automation:</strong> GitHub Actions reusable workflows + template build scripts</li>
+    <li><strong>Shared platform (template-provided):</strong> Cognito Hosted UI auth + platform backend (API Gateway, Lambda, DynamoDB) for account/profile flows</li>
+  </ul>
+</section>
+
 
     <a class="back-link" href="index.html">← Back to all projects</a>
   </div>
