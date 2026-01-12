@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Recommended Tech Stack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav-brand">learn &amp; be curious</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="detail-hero">
+      <h1 class="detail-title">AI Recommended Tech Stack</h1>
+      <p class="detail-subtitle">Chosen approach (recommended)</p>
+    </header>
+
+    <section class="detail-section gradient-border">
+      <h3>MCP transport</h3>
+      <ul>
+        <li><strong>HTTP-based MCP transport (SSE/HTTP)</strong> (not stdio)</li>
+        <li>Container listens on a port (e.g. 8080) so it deploys cleanly on AWS</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>AWS runtime &amp; data</h3>
+      <ul>
+        <li><strong>ECS Fargate Service</strong> (desiredCount=1)
+          <ul>
+            <li>Always-on process fits the “background loop starts on boot, resumes after crash” requirement</li>
+            <li>Keeping 1 task avoids multi-writer determinism issues; we can add a leader-election story later if needed</li>
+          </ul>
+        </li>
+        <li><strong>Aurora Serverless v2 (Postgres)</strong>
+          <ul>
+            <li>Lowest-ops managed Postgres on AWS</li>
+            <li>Better long-term fit than SQLite for 40M–100M draw aggregates</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Fast private access (Stage 1)</h3>
+      <ul>
+        <li><strong>Public ALB</strong> in front of the ECS service, <strong>locked down to your static IP</strong> (security group / inbound CIDR allowlist)
+          <ul>
+            <li>Fastest way to test from your laptop immediately</li>
+            <li>No VPN, no Cognito, no API Gateway required at the start</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Production scaling path (Stage 2+)</h3>
+      <ul>
+        <li>Move MCP behind an <strong>internal ALB (VPC-only)</strong></li>
+        <li>Add a separate <strong>public backend/BFF</strong> that authenticates users + rate limits, and calls MCP privately inside the VPC</li>
+        <li>Add WAF/CloudFront/etc. only when needed</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Local dev workflow (matches prod)</h3>
+      <ul>
+        <li><strong>Docker Compose</strong>: local Postgres + MCP server container</li>
+        <li>Explicit <strong>TEST_MODE</strong> that limits draw counts and uses isolated data (per spec)</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>What I need from you before we implement infra</h3>
+      <ol>
+        <li>Your <strong>static IP in CIDR form</strong> (e.g. <code>203.0.113.10/32</code>) for the ALB allowlist</li>
+        <li>Target <strong>AWS region</strong> (e.g. <code>us-west-2</code>) and whether we’re deploying into a fresh account/VPC or an existing one</li>
+      </ol>
+      <p>If you confirm those, next I’ll propose the minimal CDK stack layout (VPC, Aurora, ECS, ALB, secrets, logs) and then we can proceed to implementation when you say so.</p>
+    </section>
+
+    <a class="back-link" href="simlottery-mcp.html">← Back to SimLottery MCP</a>
+  </div>
+</body>
+</html>
