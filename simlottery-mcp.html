@@ -31,14 +31,65 @@
 
     <section class="detail-section">
       <h3>Built with</h3>
-      <ul>
-        <li><strong>(Idea)</strong> OpenAI ChatGPT (GPT-5.2)</li>
-        <li><strong>(Graphic Design)</strong> TBD</li>
-        <li><strong>(Architecture Design)</strong> TBD</li>
-        <li><strong>(Requirements)</strong> <a class="card-link" href="PROMPT.MD">PROMPT.MD</a></li>
-        <li><strong>(Development)</strong> TBD</li>
-        <li><strong>(Testing)</strong> TBD</li>
-        <li><strong>(Deployment)</strong> TBD</li>
+      <ul class="detail-list">
+        <li><strong>Idea:</strong> OpenAI ChatGPT (GPT-5.2)</li>
+        <li><strong>Graphic Design:</strong> TBD</li>
+        <li><strong>Requirements:</strong> <a class="card-link" href="PROMPT.MD">PROMPT.MD</a></li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Architecture Design</h3>
+      <p>Designed a staged system with clear separation of concerns:</p>
+      <ul class="detail-list">
+        <li>Backend services for simulation + persistence</li>
+        <li>A small public API (BFF) used by the dashboard</li>
+        <li>A read-only web dashboard for public visibility</li>
+      </ul>
+      <p>Implemented AWS infrastructure as code using AWS CDK, deploying:</p>
+      <ul class="detail-list">
+        <li>Containerized compute (ECS Fargate)</li>
+        <li>A managed database (Aurora PostgreSQL)</li>
+        <li>Static website hosting (S3 + CloudFront)</li>
+        <li>A public API surface (API Gateway)</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Development</h3>
+      <p>Worked iteratively in small, reviewable changes with frequent validation.</p>
+      <p>AI-assisted engineering was used to speed up implementation and troubleshooting:</p>
+      <ul class="detail-list">
+        <li><strong>Tooling:</strong> Cline (VS Code) with an LLM backend (Claude via API).</li>
+        <li>Typical use: code navigation, refactors, patch generation, and deployment orchestration.</li>
+      </ul>
+      <p>Key product-facing improvements delivered:</p>
+      <ul class="detail-list">
+        <li>Added/updated the Historical Matches experience.</li>
+        <li>Switched the website to clean, path-based URLs (e.g. <code>/historical-matches</code>).</li>
+        <li>Improved navigation reliability using standard links.</li>
+        <li>Fixed a UI animation timing bug affecting number transitions.</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Testing</h3>
+      <p>Performed local and production smoke checks:</p>
+      <ul class="detail-list">
+        <li>Built the web app and validated pages render correctly.</li>
+        <li>Verified the Historical Matches page refreshes and shows newly available match results.</li>
+        <li>Validated deployed assets via CloudFront and confirmed navigation in a real browser.</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>Deployment</h3>
+      <p>Deployment was automated through infrastructure as code (AWS CDK).</p>
+      <p>Web releases followed a repeatable flow:</p>
+      <ul class="detail-list">
+        <li>Build static assets (<code>npm run build</code>)</li>
+        <li>Deploy via CDK (upload + CloudFront distribution update)</li>
+        <li>Invalidate CloudFront cache to ensure customers receive the newest version.</li>
       </ul>
     </section>
 
