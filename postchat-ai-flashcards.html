@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PostChat AI – Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav-brand">learn &amp; be curious</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="detail-hero">
+      <h1 class="detail-title">PostChat AI – Flashcards</h1>
+      <p class="detail-subtitle">
+        Turn long AI conversations or pasted text into structured flashcards.
+      </p>
+    </header>
+
+    <section class="detail-section gradient-border">
+      <h3>Overview</h3>
+      <p>
+        PostChat AI is an iOS app for converting long AI conversations or pasted text into flashcards. It’s built to take messy, exploratory content (chat transcripts, notes, long threads) and turn it into a study-ready deck, without requiring manual rewriting.
+      </p>
+      <p>
+        This project also served as a higher-complexity “app factory” validation on top of my shared platform: it stresses async workloads, multi-step generation, cost controls, and a real end-to-end workflow (input → processing → deck → study).
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Built with</h3>
+      <ul class="detail-list">
+        <li>
+          <strong>Idea:</strong>
+          The concept came from repeatedly using ChatGPT/Codex for long technical threads and then wanting a way to actually study the outcomes.
+        </li>
+        <li>
+          <strong>Graphic Design:</strong>
+          Designed the screens and flows using Figma Make. Iterated and generated UI variants through the Figma MCP Server to move faster on layout, spacing, and flow changes.
+        </li>
+        <li>
+          <strong>Architecture Design:</strong>
+          Built on the shared Learn &amp; Be Curious iOS template (sidebar shell, auth surfaces, legal links, shared navigation patterns). Uses the shared platform backend for identity and multi-tenant separation. Introduces an app-specific data domain for conversations/summaries/decks/cards. Flashcard generation runs asynchronously so the UI isn’t blocked by model calls.
+        </li>
+        <li>
+          <strong>Requirements:</strong>
+          Paste mode as the default Home flow. Chat mode as Pro-gated. Framing prompt required before generation. Mandatory pipeline: chunking → summarization → semantic summary → flashcard generation. Deck persistence + study mode (flip/swipe/expand) with simple UX.
+        </li>
+        <li>
+          <strong>Development:</strong>
+          Vibe-coded implementation using OpenAI Codex for the iOS client and backend pipeline scaffolding. Integrated server-side OpenAI calls for summarization + flashcard generation with bounded inputs. Built the deck + card study UI on top of the shared template shell.
+        </li>
+        <li>
+          <strong>Testing:</strong>
+          Manual end-to-end testing of paste and chat flows: ingestion, framing, async generation, deck creation, and study mode interactions. Sanity checks around long inputs (chunking behavior) and stable generation completion.
+        </li>
+        <li>
+          <strong>Deployment:</strong>
+          Built and shipped via the shared CI workflow (GitHub Actions) using manifest + overlay patterns. Backend deployed to shared environments; iOS builds produced as distributable artifacts (TestFlight/App Store links TBD).
+        </li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h3>AI inside</h3>
+      <p>
+        Yes. Uses OpenAI models server-side for summarization and flashcard generation. Also uses AI tooling during development (Codex) and design iteration (Figma Make + Figma MCP Server).
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h3>Tech Stack</h3>
+      <ul class="detail-list">
+        <li><strong>iOS:</strong> Swift, SwiftUI (UIKit where needed)</li>
+        <li><strong>Backend:</strong> Serverless platform backend (API Gateway, Lambda)</li>
+        <li><strong>Database:</strong> Postgres (app-specific domain)</li>
+        <li><strong>Async:</strong> Job-based pipeline (queue/workers)</li>
+        <li><strong>AI:</strong> OpenAI APIs (server-side) + OpenAI Codex (development)</li>
+        <li><strong>Design:</strong> Figma Make + Figma MCP Server</li>
+        <li><strong>Build/automation:</strong> GitHub Actions reusable workflows</li>
+        <li><strong>Shared platform:</strong> Template shell + auth/profile infrastructure</li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to all projects</a>
+  </div>
+</body>
+</html>
