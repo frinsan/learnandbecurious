@@ -182,6 +182,21 @@ nav {
   opacity: 0.4;
 }
 
+
+.card-deprecated::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(90, 96, 109, 0.55);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-deprecated > * {
+  position: relative;
+  z-index: 2;
+}
+
 .placeholder-img {
   height: 140px;
   border-radius: 12px;
