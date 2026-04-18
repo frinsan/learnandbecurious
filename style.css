@@ -217,6 +217,22 @@ nav {
 .card:nth-child(5) { animation-delay: 200ms; }
 .card:nth-child(6) { animation-delay: 240ms; }
 
+.card-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(41, 87, 67, 0.92);
+  color: #f9f5ed;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(41, 87, 67, 0.18);
+}
+
 .card-deprecated {
   background: linear-gradient(180deg, rgba(244, 242, 238, 0.92), rgba(235, 232, 227, 0.8));
 }
