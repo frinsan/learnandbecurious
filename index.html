@@ -17,58 +17,31 @@
 <body>
   <div class="container">
     <nav>
-      <div class="nav-brand">learn &amp; be curious</div>
+      <a class="nav-brand" href="index.html">learn &amp; be curious</a>
       <ul class="nav-links">
         <li><span class="nav-label">Home</span></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
 
     <header class="hero" id="home">
-      <h1>Building and shipping real apps with AI.</h1>
-      <p>Case studies and notes from taking ideas all the way to production.</p>
+      <p class="hero-kicker">Independent Product Portfolio</p>
+      <h1>Real apps, built with AI and powered by AI.</h1>
+      <p>I build and ship real apps, experimenting and learning as I go.</p>
     </header>
 
     <section class="projects gradient-border" id="projects">
-      <h2 class="section-title">Projects</h2>
       <div class="grid">
-        <article class="card">
-          <img class="project-image" src="tile-app-template.png" alt="Incepture app tile placeholder">
-          <h3>Incepture</h3>
-          <div class="card-dates">
-            <span>Start: TBD</span>
-            <span>End: TBD</span>
-          </div>
-          <p>Placeholder for a new project. Details to be determined.</p>
-          <div class="meta-label">Built with:</div>
-          <div class="meta-copy">TBD</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">TBD</div>
-          <div class="store-badges">
-            <span class="store-badge is-disabled" aria-disabled="true">
-              <span class="badge-icon apple" aria-hidden="true"></span>
-              App Store
-            </span>
-            <span class="store-badge is-disabled" aria-disabled="true">
-              <span class="badge-icon google" aria-hidden="true">▶</span>
-              Google Play
-            </span>
-          </div>
-        </article>
-
         <article class="card">
           <img class="project-image" src="tile-thehighground.png" alt="The High Ground app tile">
           <h3>The High Ground</h3>
           <div class="card-dates">
             <span>Start: Jan 2026</span>
-            <span>End: Mar 2026</span>
+            <span>End: Ongoing</span>
           </div>
           <p>A private toolkit for hard moments—store, organize, and remember the tools that keep you grounded when it matters most.</p>
           <div class="meta-label">Built with:</div>
           <div class="meta-copy">LABC App Platform, OpenAI ChatGPT (GPT-5.2), VS Code + OpenAI Codex extension (GPT-5.2), Figma Make, Figma MCP Server</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">TBD</div>
           <div class="store-badges">
             <a class="store-badge" href="https://apps.apple.com/us/app/high-ground-personal-vault/id6756084456" target="_blank" rel="noreferrer">
               <span class="badge-icon apple" aria-hidden="true"></span>
@@ -86,13 +59,11 @@
           <h3>PostChat AI – Flashcards</h3>
           <div class="card-dates">
             <span>Start: Jan 2026</span>
-            <span>End: Feb 2026</span>
+            <span>End: Ongoing</span>
           </div>
           <p>Turn long AI conversations or pasted text into structured flashcards.</p>
           <div class="meta-label">Built with:</div>
           <div class="meta-copy">Swift/SwiftUI, shared iOS app template + brand overlay, OpenAI APIs, Codex App (GPT-5.3), Figma Make, Figma MCP Server, GitHub Actions</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">Yes</div>
           <div class="store-badges">
             <a class="store-badge" href="https://apps.apple.com/us/app/postchat-ai-flashcards/id6758133193" target="_blank" rel="noreferrer">
               <span class="badge-icon apple" aria-hidden="true"></span>
@@ -115,8 +86,6 @@
           <p>SimLottery MCP is an experimental Model Context Protocol (MCP) server that runs a long-lived, deterministic lottery simulation at 1-in-41,416,353 odds over approximately three months for observation and systems experimentation. This project is now deprecated due to high operating cost.</p>
           <div class="meta-label">Built with:</div>
           <div class="meta-copy">OpenAI ChatGPT (GPT-5.2), Cline + OpenAI Codex extension (GPT-5.2)</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">None</div>
           <div class="store-badges"></div>
         </article>
 
@@ -130,8 +99,6 @@
           <p>A lightweight iOS app for creating passport and visa photos. Users select a country preset (or custom size), align their photo using a visual guide, and export a submission-ready image with correct dimensions and DPI.</p>
           <div class="meta-label">Built with:</div>
           <div class="meta-copy">LABC App Platform, OpenAI ChatGPT (GPT-5.1), VS Code + OpenAI Codex extension (GPT-5.1)</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">None</div>
           <div class="store-badges">
             <a class="store-badge" href="https://apps.apple.com/us/app/visa-photo-maker/id6755447266" target="_blank" rel="noreferrer">
               <span class="badge-icon apple" aria-hidden="true"></span>
@@ -153,9 +120,7 @@
           </div>
           <p>A shared backend, SwiftUI app template, and CI/CD automation that turns per-brand manifests into shipped iOS apps.</p>
           <div class="meta-label">Built with:</div>
-          <div class="meta-copy">OpenAI ChatGPT (GPT-5), VS Code + OpenAI Codex extension (GPT-5)</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">Apple on-device Foundation Models (SystemLanguageModel), exposed as a feature-flagged capability controlled via per-app manifests.</div>
+          <div class="meta-copy">OpenAI ChatGPT (GPT-5), VS Code + OpenAI Codex extension (GPT-5), AI inside: Apple on-device Foundation Models (SystemLanguageModel), exposed as a feature-flagged capability controlled via per-app manifests.</div>
           <div class="store-badges">
             <span class="store-badge is-disabled" aria-disabled="true">
               <span class="badge-icon apple" aria-hidden="true"></span>
@@ -169,7 +134,7 @@
         </article>
 
         <article class="card">
-          <img class="project-image" src="project-baccarat.png" alt="Million Hands: Baccarat Chat AI interface preview">
+          <img class="project-image" src="tile-baccarat.png" alt="Million Hands: Baccarat Chat AI tile">
           <h3>Million Hands: Baccarat Chat AI</h3>
           <div class="card-dates">
             <span>Start: Mar 2025</span>
@@ -177,9 +142,7 @@
           </div>
           <p>An AI-driven baccarat assistant that answers natural-language questions using empirical data from over 1 million simulated hands.</p>
           <div class="meta-label">Built with:</div>
-          <div class="meta-copy">OpenAI ChatGPT (GPT-4), OpenAI Codex CLI (GPT-4), OpenAI Codex Web (GPT-4)</div>
-          <div class="meta-label">AI inside:</div>
-          <div class="meta-copy">GPT-4 tool-using agent (LangChain) with a custom scikit-learn RandomForest predictor</div>
+          <div class="meta-copy">OpenAI ChatGPT (GPT-4), OpenAI Codex CLI (GPT-4), OpenAI Codex Web (GPT-4), AI inside: GPT-4 tool-using agent (LangChain) with a custom scikit-learn RandomForest predictor</div>
           <div class="store-badges">
             <a class="store-badge" href="https://apps.apple.com/us/app/million-hands-baccarat-ai/id6752113932" target="_blank" rel="noreferrer">
               <span class="badge-icon apple" aria-hidden="true"></span>
@@ -194,7 +157,7 @@
       </div>
     </section>
 
-    <section class="detail-section" aria-label="cta">
+    <section class="detail-section cta-panel" aria-label="cta">
       <h3>Let’s connect</h3>
       <p>Have an idea, question, or potential collaboration in mind? Reach out through the <a class="card-link" href="contact.html">contact page</a> to start a conversation.</p>
     </section>
